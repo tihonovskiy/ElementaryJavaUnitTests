@@ -25,22 +25,21 @@ public class TestResultParser {
             while ((line = reader.readLine()) != null) {
                 summeryResult.add(line);
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
         String tmp;
         for (String str : summeryResult) {
-            if(str.contains("tests found")) {
+            if (str.contains("tests found")) {
                 tmp = str.replaceAll("[a-zA-Z ]", "");
-                testResult.setTotalCountOfTests(Integer.parseInt(str.replaceAll("[a-zA-Z ]", "").substring(1,tmp.length()-1)));
+                testResult.setTotalCountOfTests(Integer.parseInt(str.replaceAll("[a-zA-Z ]", "").substring(1, tmp.length() - 1)));
             } else if (str.contains("tests successful")) {
                 tmp = str.replaceAll("[a-zA-Z ]", "");
-                testResult.setCountPassedTest(Integer.parseInt(str.replaceAll("[a-zA-Z ]", "").substring(1,tmp.length()-1)));
+                testResult.setCountPassedTest(Integer.parseInt(str.replaceAll("[a-zA-Z ]", "").substring(1, tmp.length() - 1)));
             } else if (str.contains("tests failed")) {
                 tmp = str.replaceAll("[a-zA-Z ]", "");
-                testResult.setCountFailedTests(Integer.parseInt(str.replaceAll("[a-zA-Z ]", "").substring(1,tmp.length()-1)));
+                testResult.setCountFailedTests(Integer.parseInt(str.replaceAll("[a-zA-Z ]", "").substring(1, tmp.length() - 1)));
             }
         }
         testResult.setDate(summeryResult.get(0));

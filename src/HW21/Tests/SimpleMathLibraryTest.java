@@ -9,7 +9,7 @@ public class SimpleMathLibraryTest {
 
     @Test
     public void checkAddMethod() {
-        if(simpleMathLibrary.add(10, 7) == 17) {
+        if (simpleMathLibrary.add(10, 7) == 17) {
             System.out.println("OK");
         } else {
             System.out.println("NOK");
@@ -18,7 +18,7 @@ public class SimpleMathLibraryTest {
 
     @Test
     public void checkMinusMethod() {
-        if(simpleMathLibrary.minus(10, 7) == 3) {
+        if (simpleMathLibrary.minus(10, 7) == 3) {
             System.out.println("OK");
         } else {
             System.out.println("NOK");

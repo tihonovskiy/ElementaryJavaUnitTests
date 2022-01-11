@@ -31,7 +31,26 @@ public class TestRunner {
 
         TestExecutionSummary summary = listener.getSummary();
         summary.printTo(new PrintWriter(System.out));
-        summary.printTo(new PrintWriter("testResult.txt"));
+        summary.printTo(pw);
+    }
+
+    public void run(String ... classNames) throws FileNotFoundException {
+        for (String className : classNames) {
+            PrintWriter pw = new PrintWriter("testResult.txt");
+            pw.write(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+            LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
+                    .selectors(DiscoverySelectors.selectClass(className))
+                    .build();
+
+            Launcher launcher = LauncherFactory.create();
+            launcher.registerTestExecutionListeners(listener);
+            launcher.execute(request);
+
+            TestExecutionSummary summary = listener.getSummary();
+            summary.printTo(new PrintWriter(System.out));
+            summary.printTo(pw);
+        }
     }
 
     public <T> void run(Class<T> aClass) throws FileNotFoundException {
@@ -48,7 +67,7 @@ public class TestRunner {
 
         TestExecutionSummary summary = listener.getSummary();
         summary.printTo(new PrintWriter(System.out));
-        summary.printTo(new PrintWriter("testResult.txt"));
+        summary.printTo(pw);
     }
 
     public void runToPath(String packagePath) throws FileNotFoundException {
@@ -67,7 +86,6 @@ public class TestRunner {
         TestExecutionSummary summary = listener.getSummary();
         summary.printTo(new PrintWriter(System.out));
         summary.printTo(pw);
-
     }
 
 }
