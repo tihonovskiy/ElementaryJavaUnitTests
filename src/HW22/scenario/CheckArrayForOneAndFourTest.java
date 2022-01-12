@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 
 import static HW22.MyArray.checkArrayForOneAndFour;
 
-public class checkArrayForOneAndFourTest {
+public class CheckArrayForOneAndFourTest {
     int[] validIntegerArray = {1, 1, 1, 4, 4, 1, 4, 4};
     int[] integerArrayWithOneNumberOnly = {1, 1, 1, 1, 1, 1};
     int[] integerArrayWithFourNumberOnly = {4, 4, 4, 4};
